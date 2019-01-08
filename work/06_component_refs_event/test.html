@@ -28,7 +28,6 @@
      */
     class MyComponent extends React.Component {
 
-
       hint = () => {
         console.log('hint()', this)
         alert(this.refs.left.value)
@@ -36,6 +35,10 @@
 
       handleBlur = (event) => {
         alert(event.target.value)
+      }
+
+      handleBlur2 () {
+
       }
 
       render () {

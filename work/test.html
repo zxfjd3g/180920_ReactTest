@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>$Title$</title>
+</head>
+<body>
+<script type="text/javascript" src="./js/babel.min.js"></script>
+<script type="text/babel">
+  class MyClass {
+
+    xxx =  'abc' // 实例对象本身的属性
+
+    static yyy = 'cba' // 类对象的属性
+
+    test1 () { // 方法在实例对象的原型对象上
+
+    }
+
+    test2 = () => { // 实例对象本身的方法
+
+    }
+  }
+
+  const c = new MyClass()
+  console.log(c, MyClass.yyy)
+</script>
+</body>
+</html>
