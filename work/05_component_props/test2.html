@@ -32,12 +32,23 @@
 
   class Person extends React.Component {
 
-    /*constructor(props) {
-      // super()调用父类型的构建函数
-      super(props)  // this.props = props;
-      // super()
-      console.log('constructor()', this.props)
-    }*/
+    // 给组件实例对象添加属性
+    state = {
+      time: Date.now()
+    }
+
+    // 给组件类对象添加属性
+    static propTypes = {
+      name: PropTypes.string.isRequired, // 属性名/属性值的类型/属性的必要性
+      age: PropTypes.number,
+      sex: PropTypes.string
+    }
+
+    // 属性的默认值
+    static defaultProps = {
+      age: 18,
+      sex: '男'
+    }
 
     render() {
       console.log('render()', this)
@@ -53,20 +64,6 @@
       )
     }
   }
-
-  // 限制属性的: 属性名/属性值的类型/属性的必要性
-  Person.propTypes = {
-    name: PropTypes.string.isRequired, // 属性名/属性值的类型/属性的必要性
-    age: PropTypes.number,
-    sex: PropTypes.string
-  }
-
-  // 属性的默认值
-  Person.defaultProps = {
-    age: 18,
-    sex: '男'
-  }
-
 
 
   const p1 = {

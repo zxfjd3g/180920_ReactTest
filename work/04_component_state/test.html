@@ -27,14 +27,23 @@
       指定this为组件对象?  改为箭头函数
   */
   // Like: 组件类
+  // Like实例: 组件对象
   class Like extends React.Component {
 
-    constructor(props) {
+    /*
+    一旦创建实例, 立即回调
+    在函数体中做什么? 做一些准备工作, 比如初始化组件对象state属性值
+    */
+    /*constructor(props) {
       super(props)
       // 初始化状态
       this.state = {// state是包含所有状态数据的容器对象
         isLikeMe: false
       }
+    }*/
+    // 给组件对象设置state属性
+    state = {
+      isLike: false
     }
 
     /*
