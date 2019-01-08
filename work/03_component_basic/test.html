@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>03_component_basic</title>
+</head>
+<body>
+
+<div id="example1"></div>
+<div id="example2"></div>
+
+<script type="text/javascript" src="../js/react.development.js"></script>
+<script type="text/javascript" src="../js/react-dom.development.js"></script>
+<script type="text/javascript" src="../js/babel.min.js"></script>
+
+<script type="text/babel">
+  /*
+  工厂函数: 每次调用都返回一个新的对象
+  */
+
+  // 1. 定义组件
+  /*方式1: 工厂函数组件(简单组件)*/
+  function MyComponent() {
+    console.log('MyComponent()', this)
+    return <h2>工厂函数组件(简单组件)</h2>   // 返回虚拟DOM
+  }
+
+  /*方式2:  ES6类组件(复杂组件)*/
+  class MyComponent2 extends React.Component {
+
+    // 重写的回调函数, 用来为组件标签提供虚拟DOM
+    render() {
+      console.log('render()', this, this === MyComponent2, this instanceof MyComponent2)
+      return (
+        <div>
+          <h2>ES6类组件(复杂组件)</h2>
+          <h2>ES6类组件(复杂组件)</h2>
+          <input type="text" />
+        </div>
+      )
+    }
+  }
+
+  /*
+  类: 构造函数
+  定义在类中的方法: 由(类的)实例来调用
+   */
+
+  console.log(typeof MyComponent2)
+
+
+  // 2. 渲染函数组件标签: 内部直接调用组件函数得到虚拟DOM
+  ReactDOM.render(<MyComponent/>, document.getElementById('example1'))
+
+  // 渲染类组件标签, 内部会自动创建类的实例, 并调用其render()得到需要渲染的虚拟DOM
+  ReactDOM.render(<MyComponent2/>, document.getElementById('example2'))
+
+</script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>02_JSX_DEMO</title>
+</head>
+<body>
+  <h2>前端JS框架列表</h2>
+  <div id="example1">
+    <!--<ul>
+      <li>xxx</li>
+      <li>yyy</li>
+      <li>zzz</li>
+    </ul>-->
+  </div>
+
+  <script type="text/javascript" src="../js/react.development.js"></script>
+  <script type="text/javascript" src="../js/react-dom.development.js"></script>
+  <script type="text/javascript" src="../js/babel.min.js"></script>
+
+  <script type="text/babel">
+    /*
+     功能: 动态展示列表数据
+     react渲染数组时: 会自动遍历显示数据中所有的元素
+     根据数据的数组生成一个标签的数组: arr.map()
+     arr.map((item, index) => xxx): 生成一个新数组, 新数组的元素由回调函数的返回值组成
+     */
+    const names = ['jQuery1', 'react1', 'vue1']  // 数据的数组
+
+
+    // 1. 创建虚拟DOM
+    const ul = (
+      <ul>
+        {
+          names.map((name, index) => <li key={index}>{name}</li>)
+        }
+      </ul>
+    )
+
+    // 渲染虚拟DOM
+    ReactDOM.render(ul, document.getElementById('example1'))
+
+  </script>
+</body>
+</html>

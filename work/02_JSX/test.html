@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>02_JSX</title>
+</head>
+<body>
+  <div id="test1"></div>
+  <div id="test2"></div>
+
+<script type="text/javascript" src="../js/react.development.js"></script>
+<script type="text/javascript" src="../js/react-dom.development.js"></script>
+<script type="text/javascript" src="../js/babel.min.js"></script>
+
+
+<script type="text/javascript">
+  // 1. 创建虚拟DOM (使用js语法)   虚拟DOM元素对象
+  let myId = 'abc'
+  let myName = 'tom'
+  let content = 'atgugu'
+  const vDOM = React.createElement('h3', {id: myId, name: myName}, content)
+  // <h3 id='abc' name='tom'>atguigu</h3>
+
+  // 2. 渲染虚拟DOM
+  ReactDOM.render(vDOM, document.getElementById('test1'))
+
+  let div = document.getElementById('test2')
+  debugger
+</script>
+
+<script type="text/babel"> /*声明使用babel*/
+  content = content.toUpperCase()
+  // 1. 创建虚拟DOM (使用jsx语法)
+  const vDOM2 = <h3 id={myId} name={myName}>{content}</h3>
+  debugger
+  // 2. 渲染虚拟DOM
+  ReactDOM.render(vDOM2, document.getElementById('test2'))  // 插入前: 根据虚拟DOM生成真实DOM
+</script>
+
+</body>
+</html>
