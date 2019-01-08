@@ -18,7 +18,39 @@
       1. 界面如果页面所示
       2. 点击按钮, 提示第一个输入框中的值
       3. 当第2个输入框失去焦点时, 提示这个输入框中的值
+
    */
+    /*
+    问题: 组件对象的refs属性对象有哪些属性?
+        组件内所有ref属性的标签元素
+        属性名是ref属性的值
+        属性值是标签元素
+     */
+    class MyComponent extends React.Component {
+
+
+      hint = () => {
+        console.log('hint()', this)
+        alert(this.refs.left.value)
+      }
+
+      handleBlur = (event) => {
+        alert(event.target.value)
+      }
+
+      render () {
+        return (
+          <div>
+            <input type="text" ref="left"/>
+            <button onClick={this.hint}>提示</button>
+            <input type="text" onBlur={this.handleBlur}/>
+          </div>
+        )
+      }
+    }
+
+    ReactDOM.render(<MyComponent/>, document.getElementById('example'))
+
   </script>
 </body>
 </html>
