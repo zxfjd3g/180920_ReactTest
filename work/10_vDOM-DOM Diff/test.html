@@ -18,17 +18,15 @@
   */
 
   class HelloWorld extends React.Component {
-    constructor(props) {
-      super(props)
-      this.state = {
-          date: new Date()
-      }
+
+    state = {
+      date: Date.now()
     }
 
     componentDidMount () {
       setInterval(() => {
         this.setState({
-            date: new Date()
+            date: Date.now()
         })
       }, 1000)
     }
@@ -38,7 +36,7 @@
       return (
         <p>
           Hello, <input type="text" placeholder="Your name here"/>!&nbsp;
-          <span>It is {this.state.date.toTimeString()}</span>
+          <span>It is {this.state.date}</span>
         </p>
       )
     }
