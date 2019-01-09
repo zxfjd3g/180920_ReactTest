@@ -14,6 +14,110 @@
   <script type="text/javascript" src="../js/babel.min.js"></script>
   <script type="text/babel">
 
+    class App extends React.Component {
+
+      // 初始化状态
+      state = {
+        todos: [
+          'A',
+          'B',
+          'C',
+          'D'
+        ]
+      }
+
+      // 向todos中添加todo
+      addTodo = (todo) => {
+        // 得到状态数据todos
+        const {todos} = this.state
+        // 更新状态数据
+        todos.unshift(todo)
+        // 更新状态
+        this.setState({
+          todos
+        })
+      }
+
+
+      render () {
+        console.log('App render()')
+        // 读取内部的状态数据
+        const {todos} = this.state
+
+        return (
+          <div>
+            <h1>TODO LIST</h1>
+            <Add size={todos.length} addTodo={this.addTodo}/>
+            <List todos={todos}/>
+          </div>
+        )
+      }
+    }
+
+    class Add extends React.Component {
+
+      static propTypes = {
+        size: PropTypes.number.isRequired,
+        addTodo: PropTypes.func.isRequired
+      }
+
+      addTodo = () => {
+        // 1. 得到输入的todo
+        const todo = this.refs.todo.value
+        // 2. 将todo添加到todos中
+        this.props.addTodo(todo)
+        // 3. 清除输入
+        this.refs.todo.value = ''
+      }
+
+      render () {
+
+        const {size} = this.props
+
+        return (
+          <div>
+            <input type="text" ref="todo"/>
+            <button onClick={this.addTodo}>Add #{size}</button>
+          </div>
+        )
+      }
+    }
+
+    class List extends React.Component {
+
+      // 声明接收哪些标签属性
+      static propTypes = {
+        todos: PropTypes.array.isRequired
+      }
+
+      render () {
+        // 读取外部传入的属性数据
+        const {todos} = this.props
+
+        return (
+          <ul>
+            {
+              todos.map((todo, index) => {
+                return <li key={index}>{todo}</li>
+              })
+            }
+          </ul>
+        )
+      }
+    }
+    
+    
+    ReactDOM.render(<App/>, document.getElementById('example'))
+
+
+  /*  var fn = function () {
+
+    }
+
+    function fn2(f) {
+
+    }
+    fn2(fn)*/
   </script>
 </body>
 </html>

@@ -28,7 +28,12 @@
      */
     class MyComponent extends React.Component {
 
-      hint = () => {
+      constructor (props) {
+        super(props)
+        this.hint = this.hint.bind(this)
+      }
+
+      hint () {
         console.log('hint()', this)
         alert(this.refs.left.value)
       }

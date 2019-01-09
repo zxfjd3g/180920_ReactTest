@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>04_component_props</title>
+</head>
+<body>
+
+<div id="example1"></div>
+<hr>
+<div id="example2"></div>
+
+<script type="text/javascript" src="../js/react.development.js"></script>
+<script type="text/javascript" src="../js/react-dom.development.js"></script>
+<script type="text/javascript" src="../js/prop-types.js"></script>
+<script type="text/javascript" src="../js/babel.min.js"></script>
+
+<script type="text/babel">
+
+  /*
+向组件对象传递props的2种方式
+1. 组件标签的标签属性: 接收不确定的数据
+2. 组件标签体子标签: 接收不确定的标签
+  */
+
+  /*
+  props属性:
+    值是对象
+    包含组件标签属性数据
+   */
+
+  class Person extends React.Component {
+
+    /*constructor(props) {
+      // super()调用父类型的构建函数
+      super(props)  // this.props = props;
+      // super()
+      console.log('constructor()', this.props)
+    }*/
+
+    render() {
+      console.log('render()', this)
+
+      return (
+        <ul>
+          {this.props.children}
+        </ul>
+      )
+    }
+  }
+
+
+  const p1 = {
+    name: 'Tom',
+    sex: '男',
+    age: 18
+  }
+
+
+  // ReactDOM.render(<Person name={p1.name} sex={p1.sex} age={p1.age}/>, document.getElementById('example1'))
+  ReactDOM.render((
+    <Person>
+      <li>姓名: {p1.name}</li>
+      <li>性别: {p1.sex}</li>
+      <li>年龄: {p1.age}</li>
+    </Person>
+  ), document.getElementById('example1'))
+
+
+
+</script>
+</body>
+</html>
+
