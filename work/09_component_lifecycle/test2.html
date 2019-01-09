@@ -12,10 +12,23 @@
 <script type="text/javascript" src="../js/babel.min.js"></script>
 <script type="text/babel">
   /*
-  需求: 自定义组件
-    1. 让指定的文本做显示/隐藏的动画
-    2. 切换时间为2S
-    3. 点击按钮从界面中移除组件界面
+组件生命周期
+ 1. 初始化: ReactDOM.render(<MyComponent/>)
+    componentWillMount()
+    render()
+    componentDidMount()
+ 2. 更新: this.setState({})
+    componentWillUpdate()
+    render()
+    componentDiDUpdate()
+ 3. 死亡: ReactDOM.unmountComponentAtNode()
+    componentWillUnmount()
+
+常用回调
+    render(): 必用, 提供界面, 初始化/更新
+    componentDidMount(): 在第1次render()之后调用, 只有1次, 执行异步代码
+    componentWillMount(): 在第1次render()之前调用, 为第一次render提供初始数据
+    componentWillUnmount(): 在组件被卸载前调用, 只有1次, 做一些收尾的工作(如: 清除定时器)
    */
 
   // let intervalId
