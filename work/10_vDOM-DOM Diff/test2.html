@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>04_component</title>
+</head>
+<body>
+<div id="example"></div>
+<br>
+
+<script type="text/javascript" src="../js/react.development.js"></script>
+<script type="text/javascript" src="../js/react-dom.development.js"></script>
+<script type="text/javascript" src="../js/babel.min.js"></script>
+<script type="text/babel">
+  /*
+  验证:
+  虚拟DOM+DOM Diff算法: 批量更新 + 最小化DOM更新
+  */
+
+  class HelloWorld extends React.Component {
+
+    state = {
+      content: 'A',
+      xxx: 2
+    }
+
+    update = (content) => {
+      this.setState({
+        content: 'B'
+      })
+
+      this.setState({
+        content: 'C'
+      })
+    }
+
+    render () {
+      console.log('render()', this.state.content)
+      return (
+        <div>
+          <div>{this.state.content}</div>
+          <button onClick={this.update}>更新</button>
+        </div>
+      )
+    }
+  }
+
+  ReactDOM.render(
+    <HelloWorld/>,
+    document.getElementById('example')
+  )
+</script>
+</body>
+</html>
